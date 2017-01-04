@@ -1,0 +1,2 @@
+class ClassRoleController < ApplicationController
+end

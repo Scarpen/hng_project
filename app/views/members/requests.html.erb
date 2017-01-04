@@ -1,0 +1,24 @@
+<h3>Solicitações</h3>
+<h5>Permissão de Acesso</h5>
+<% @access.each do |member| %>
+
+<strong> <%= member.nick %> </strong>
+<p> Recrutador: <%= member.recruiter %> </p>
+<p> <%= member.recruiter %> </p>
+<p>
+<%= link_to 'Aceitar', accept_request_members_path(user: member.id) %>
+<%= link_to 'Recusar', refuse_request_members_path(user: member.id) %>
+</p>
+<% end %>
+<h5>Recrutamento</h5>
+<% @recruitment.each do |member| %>
+
+<strong> <%= member.nick %> </strong>
+<p> Razão: <%= member.reason %> </p>
+<p> <%= member.reason %> </p>
+<p>
+<%= link_to 'Aceitar', accept_request_members_path(user: member.id) %>
+<%= link_to 'Recusar', refuse_request_members_path(user: member.id) %>
+</p>
+
+<% end %>

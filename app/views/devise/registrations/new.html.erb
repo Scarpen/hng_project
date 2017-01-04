@@ -1,0 +1,77 @@
+<h2>Sign up</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.input :nick %>
+  </div>
+
+  <div class="field">
+    <%= f.input :alt1 %>
+  </div>
+
+  <div class="field">
+    <%= f.input :alt2 %>
+  </div>
+
+    <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.input :gvg %>
+  </div>
+
+  <div class="field">
+    <%= f.input :account, collection: [ "Legendary", "Epic", "Veteran"], prompt: "Escolha o tipo de conta" %>
+  </div>
+
+  <div class="field">
+    <%= f.input :recruitment, label: "Ja e membro?" %>
+  </div>
+
+  <div class="field">
+    <%= f.input :recruiter, label: "Recrutador" %>
+  </div>
+
+  <div class="field">
+    <%= f.input :activity_hour %>
+  </div>  
+
+  <div class="field">
+    <%= f.input :reason %>
+  </div>  
+
+  <div class="field">
+    <%= f.input :last_guild %>
+  </div>  
+
+  <div class="field">
+    <%= f.input :item_id %>
+    <%= f.input :player_type_id %>
+    <%= f.input :class_role_id %>
+    <%= f.input :guild_role_id %>
+    <%= f.input :gvg_core_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

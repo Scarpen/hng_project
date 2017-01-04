@@ -1,0 +1,2 @@
+module GuildRoleHelper
+end

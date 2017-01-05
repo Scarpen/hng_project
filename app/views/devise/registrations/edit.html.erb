@@ -1,39 +1,195 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3 style="margin-left: 20px; margin-top:15px; margin-bottom: 15px;">Editar Cadastro</h3>
+      </div>
+    </div>
+    <div class="clearfix"></div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="row">
+
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-horizontal form-label-left AVAST_PAM_signupform") do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="form-group row">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Nick</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                              <%= f.input :nick, input_html: { class: 'form-control' }, placeholder: "Nick", label: false %>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+    <div class="form-group row">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Char Alternativo 1</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                              <%= f.input :alt1, input_html: { class: 'form-control' }, placeholder: "Char Alternativo 1", label: false %>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div class="form-group row">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Char Alternativo 2</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                              <%= f.input :alt2, input_html: { class: 'form-control' }, placeholder: "Char Alternativo 2", label: false %>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">E-mail</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.input :email, input_html: { class: 'form-control' }, placeholder: "E-mail", label: false %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+    <div class="form-group row">
+              <% if @validatable %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Nova Senha <br> <i> (Apenas se quiser altera-la) </i></label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+
+        <%= f.password_field :password, class: 'form-control', placeholder: "Senha", label: false, autocomplete: "off" %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Confirmar Nova Senha</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Confirmar Senha", label: false %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Interesses / Como pode ajudar a guild</label>
+
+      <div class="col-md-6 col-sm-6 col-xs-12" id="gvg_div">
+        <%= f.input :gvg, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "Fazer GvG" %>
+      </div>
+
+
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+    
+    <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Conta</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.input :account, collection: [ "Lendária", "Épica", "Veterana"], prompt: "Escolha o tipo de conta", input_html: { class: 'form-control' }, placeholder: "E-mail", label: false %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>  
+
+    <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Recrutador</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.input :recruiter, input_html: { class: 'form-control' }, placeholder: "Recrutador", label: false %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Hora de Atividade</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.input :activity_hour, input_html: { class: 'form-control' }, placeholder: "Hora de Atividade", label: false %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+      <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Arma</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.input :item_id, input_html: { class: 'form-control' }, label: false, placeholder: "Arma" %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Tipo de Jogador</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.input :player_type_id, input_html: { class: 'form-control' }, label: false, placeholder: "Tipo de Jogador" %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Classe</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.input :class_role_id, input_html: { class: 'form-control' }, label: false, placeholder: "Classe" %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+    <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Avatar</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label id="fileupload-example-4-label " for="fileupload-example-4" style="margin-top: 0px">
+         <img id="imgDisplay" class="img-circle profile_img" style="float: left; width: 78px; height: 78px; cursor: pointer; margin: 0px !important"/>
+        </label>
+                <%= f.input :avatar, label: false, input_html:{class: "", style: "opacity: 0", id: 'fileupload-example-4', onchange:"imagePreview(this)" }  %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+
+
+<script>
+
+  function imagePreview(input){
+    if (input.files && input.files[0]) 
+        {
+          $('#imgDisplay').show();
+          var filerdr = new FileReader();
+          filerdr.onload = function(e) {
+              $('#imgDisplay').attr('src', e.target.result);
+          };
+          filerdr.readAsDataURL(input.files[0]);
+        }
+    };
+
+    function imageLoad(){
+      $('#imgDisplay').show();
+      $('#imgDisplay').attr('src', "<%= resource.avatar.url %>");
+    };
+    
+  <% if action_name == 'edit' || resource.errors.any? %>
+    imageLoad();
+    setInterests();
+    
+  <% else %>
+    limpar();
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+  </script>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+
+
+    <div class="ln_solid"></div>
+
+
+     <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Senha Atual <br> <i> Necessária para a confirmação das mudanças </i></label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+          <%= f.input :current_password, input_html: {class: "form-control"}, autocomplete: "off", label: false %>
+        </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+       <%= f.submit "Atualizar", class: "btn btn-primary" %>
+    </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to "Back", :back %>

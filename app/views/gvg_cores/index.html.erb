@@ -1,37 +1,54 @@
-<p id="notice"><%= notice %></p>
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3 style="margin-left: 20px; margin-top:15px;">Times de GvG</h3>
+      </div>
 
-<h1>Listing Gvg Cores</h1>
+      <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+        </div>
+      </div>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Recruiting</th>
-      <th>Recruiting description</th>
-      <th>Avatar</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="clearfix"></div>
 
-  <tbody>
-    <% @gvg_cores.each do |gvg_core| %>
-      <tr>
-        <td><%= gvg_core.name %></td>
-        <td><%= gvg_core.description %></td>
-        <td><%= gvg_core.recruiting %></td>
-        <td><%= gvg_core.recruiting_description %></td>
-        <td><%= gvg_core.avatar %></td>
-        <td><%= gvg_core.user_id %></td>
-        <td><%= link_to 'Show', gvg_core %></td>
-        <td><%= link_to 'Edit', edit_gvg_core_path(gvg_core) %></td>
-        <td><%= link_to 'Destroy', gvg_core, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="row">
 
-<br>
+      <div class="col-md-12 col-sm-12 col-xs-12">
 
-<%= link_to 'New Gvg core', new_gvg_core_path %>
+        <div class="x_panel">
+
+          <% if current_user.guild_role.permition >= Permition.find(3).permition %>
+            <%= link_to "Novo Time",new_gvg_core_path, class: "btn btn-primary" %>
+          <% else %>
+            <h2> Você precisa ter cargo de warmaster ou superior para criar um novo time de GvG</h2>
+          <% end %>
+
+            <div class="row">
+              <% @gvg_cores.each do |gvg_core| %>
+              <%= link_to gvg_core do %>
+              <div class="col-sm-6 col-md-4">
+                <div class="thumbnail" style="height: 300px;">
+                  <%= image_tag gvg_core.avatar.url, style: "height: 61%; width: 100%;" %>
+                  <div class="caption">
+                    <h3><%= gvg_core.name %></h3>
+                    <p>Lider: <%= gvg_core.user.nick %></p>
+                    <% if gvg_core.recruiting %>
+                    <p>Recrutamento Aberto</p>
+                    <% else %>
+                    <p>Recrutamento Fechado</p>
+                    <% end %>
+
+                  </div>
+                </div>
+              </div>
+              <% end %>
+              <% end %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

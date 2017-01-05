@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20161205181858) do
     t.integer  "item_id",                limit: 4
     t.integer  "player_type_id",         limit: 4
     t.integer  "class_role_id",          limit: 4
-    t.integer  "guild_role_id",          limit: 4
+    t.integer  "guild_role_id",          limit: 4,     default: 1,  null: false
     t.integer  "gvg_core_id",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"

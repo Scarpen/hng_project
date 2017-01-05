@@ -1,34 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3 style="margin-left: 20px; margin-top:15px;">Times de GvG: <%= @gvg_core.name %></h3>
+      </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @gvg_core.name %>
-</p>
+      <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+        </div>
+      </div>
+    </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @gvg_core.description %>
-</p>
+    <div class="clearfix"></div>
 
-<p>
-  <strong>Recruiting:</strong>
-  <%= @gvg_core.recruiting %>
-</p>
+    <div class="row">
 
-<p>
-  <strong>Recruiting description:</strong>
-  <%= @gvg_core.recruiting_description %>
-</p>
+      <div class="col-md-12 col-sm-12 col-xs-12">
 
-<p>
-  <strong>Avatar:</strong>
-  <%= @gvg_core.avatar %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @gvg_core.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_gvg_core_path(@gvg_core) %> |
-<%= link_to 'Back', gvg_cores_path %>
+        <div class="x_panel">
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <%= image_tag @gvg_core.avatar.url, style: "width:100%"%>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <h5> <strong> Lider: </strong> <%= @gvg_core.user.nick %>
+            <h5> <strong> Descrição: </strong> <%= @gvg_core.description %> </h5>
+            <h5> <strong>
+              <% if @gvg_core.recruiting %>
+                Recrutamento Aberto
+              <% else %>
+                Recrutamento Fechado
+              <% end %>
+            </strong> </h5>
+            <h5> <strong> Descrição do Recrutamento: </strong> <%= @gvg_core.recruiting_description %> </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

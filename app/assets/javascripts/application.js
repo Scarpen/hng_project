@@ -29,6 +29,9 @@
 //= require js/icheck/icheck.min.js
 
 //= require js/moment/moment.min.js
+//= require js/calendar/fullcalendar.min.js
+//= require js/calendar/pt-br.js
+
 //= require js/datepicker/daterangepicker.js
 
 //= require js/chartjs/chart.min.js
@@ -38,6 +41,3 @@
 //= require js/nprogress.js
 
 //= require flash.js
-
-
-

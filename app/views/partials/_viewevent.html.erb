@@ -1,0 +1,31 @@
+<div class="modal fade" id="viewModal_<%= eventq.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="x_content">
+          <div class="bs-example" data-example-id="simple-jumbotron">
+            <div class="jumbotron">
+              <h1><%= eventq.title %></h1>
+              <p><%= eventq.description %></p>
+            </div>
+          </div>
+        </div>
+        <script>
+          function openEditform<%=eventq.id%>(){
+            var current_modal = "#viewModal_<%=eventq.id%>";
+            var edit_modal = "#editModal_<%=eventq.id%>";
+            $(current_modal).modal('hide');
+            $(edit_modal).modal('show');
+          }
+        </script>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" style= "margin-bottom: 0px;">Close</button>
+          <% if current_user == eventq.user || current_user.guild_role.permition > eventq.user.guild_role.permition %>
+            <button type="button" class="btn btn-primary" onclick="openEditform<%= eventq.id %>()">
+              Editar Evento
+            </button>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
+

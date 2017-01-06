@@ -1,0 +1,81 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3 style="margin-left: 20px; margin-top:15px;">Eventos</h3>
+      </div>
+
+      <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+
+      <div class="col-md-12 col-sm-12 col-xs-12">
+
+        <div class="x_panel">
+          <% if current_user.guild_role.permition >= Permition.find(6).permition %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Novo Evento
+          </button>
+          <% end %>
+          <div id='calendar'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render "partials/newevent" %>
+  <% @events.each do |eventq| %>
+    <%= render "partials/editevent", eventq: eventq %>
+  <% end %>
+  <% @events.each do |eventq| %>
+    <%= render "partials/viewevent", eventq: eventq %>
+  <% end %>
+</div>
+
+<script>
+  $('#calendar').fullCalendar({
+    lang: "pt-br",
+    buttonText: {
+        today: "Hoje",
+        month: "Mês",
+        week: "Semana",
+        day: "Dia"
+    },
+    header: {
+        left: 'prev,next today myCustomButton',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+    },
+    events: [
+        <% @events.each do |eventq| %>
+        {
+            title  : "<%= eventq.title %>",
+            start  : "<%= eventq.event_date %>T<%= eventq.event_start.strftime('%H:%M:%S')%>",
+            end    : "<%= eventq.event_date %>T<%= eventq.event_end.strftime('%H:%M:%S')%>",
+            <% if eventq.important %>
+            color: 'red',
+            <% end %>
+            allDay : false,
+            event_id: <%= eventq.id %>
+
+        },
+        <% end %>
+        {
+            title  : " ",
+            start  : "2000-01-01"
+        }
+    ],
+    eventClick: function(event) {
+        if (event.event_id) {
+            var event_modal = "#viewModal_" + event.event_id;
+            $(event_modal).modal('show'); 
+            return false;
+        }
+    }
+  });
+</script>

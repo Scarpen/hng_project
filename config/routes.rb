@@ -19,6 +19,11 @@ Rails.application.routes.draw do
   get 'recruitment' => 'members#recruitment'
   get 'requests' => 'members#requests'
 
+  resources :events, only: [:index, :create, :update] do
+    collection do
+
+    end
+  end
 
   resources :members, only: [:index] do
     collection do

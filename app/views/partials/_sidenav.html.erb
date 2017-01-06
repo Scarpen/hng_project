@@ -5,7 +5,7 @@
     <div class="left_col scroll-view">
 
       <div class="navbar nav_title" style="border: 0;">
-        <a href="index.html" class="site_title"><%= image_tag "HnG.png", height: "34px", width:"34px" %> <span>Honor n Glory</span></a>
+        <%= link_to root_path, class: "site_title" do %><%= image_tag "HnG.png", height: "34px", width:"34px" %> <span>Honor n Glory</span><% end %>
       </div>
       <div class="clearfix"></div>
 
@@ -40,7 +40,7 @@
             <li><a href="javascript:void(0)"><i class="fa fa-bullhorn "></i> Comunicados </a>
             </li>
 
-            <li><a href="javascript:void(0)"><i class="fa fa-calendar"></i> Eventos </a>
+            <li><%= link_to events_path do %><i class="fa fa-calendar"></i> Eventos <% end %>
             </li>
 
             <li><%= link_to gvg_cores_path do %><i class="fa fa-users"></i> Times de GvG <% end %>

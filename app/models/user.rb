@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   belongs_to :class_role
   belongs_to :guild_role
   belongs_to :gvg_core
-  
+
+  has_many :events
   mount_uploader :avatar, AvatarUploader
   
 end

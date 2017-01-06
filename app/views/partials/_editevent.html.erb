@@ -1,0 +1,66 @@
+<div class="modal fade" id="editModal_<%= eventq.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Editar evento: <%= eventq.title %></h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(eventq) do |f| %>
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Título</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= f.input :title, input_html: { class: 'form-control' }, placeholder: "Título", label: false %>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Descrição</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= f.input :description, input_html: { class: 'form-control' }, placeholder: "Descrição", label: false %>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Evento Obrigatório? </label>
+
+            <div class="col-md-6 col-sm-6 col-xs-12" id="gvg_div">
+              <%= f.input :important, input_html: { class: 'flat', style:"opacity:0%, position:absolute"}, label: false %>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Data do Evento</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= f.input :event_date, input_html: { class: 'form-control', style: "width: 32%; display:inline" }, label: false %>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Hora de Inicio</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= f.input :event_start, input_html: { class: 'form-control', style: "width: 47%; display:inline" }, label: false %>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Hora de Fim <br><i> (Previsão) </i></label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= f.input :event_end, input_html: { class: 'form-control', style: "width: 47%; display:inline" }, label: false %>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" style= "margin-bottom: 0px;">Close</button>
+        <%= f.submit "Salvar", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

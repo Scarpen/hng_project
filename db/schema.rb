@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205181858) do
+ActiveRecord::Schema.define(version: 20170105193958) do
 
   create_table "class_roles", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "guild_roles", force: :cascade do |t|
@@ -72,7 +77,7 @@ ActiveRecord::Schema.define(version: 20161205181858) do
     t.integer  "item_id",                limit: 4
     t.integer  "player_type_id",         limit: 4
     t.integer  "class_role_id",          limit: 4
-    t.integer  "guild_role_id",          limit: 4,     default: 1,  null: false
+    t.integer  "guild_role_id",          limit: 4
     t.integer  "gvg_core_id",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"

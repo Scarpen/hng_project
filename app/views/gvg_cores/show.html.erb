@@ -32,6 +32,11 @@
               <% end %>
             </strong> </h5>
             <h5> <strong> Descrição do Recrutamento: </strong> <%= @gvg_core.recruiting_description %> </h5>
+            <br>
+            <br>
+            <% if @gvg_core.user == current_user %>
+            <%= link_to 'Deletar Time',  @gvg_core,  method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger" %>
+            <% end %>
           </div>
         </div>
       </div>

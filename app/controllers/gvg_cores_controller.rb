@@ -4,21 +4,33 @@ class GvgCoresController < ApplicationController
   # GET /gvg_cores
   # GET /gvg_cores.json
   def index
+    if !current_user || current_user.status != "1"
+      redirect_to new_user_session_path
+    end
     @gvg_cores = GvgCore.all
   end
 
   # GET /gvg_cores/1
   # GET /gvg_cores/1.json
   def show
+    if !current_user || current_user.status != "1"
+      redirect_to new_user_session_path
+    end
   end
 
   # GET /gvg_cores/new
   def new
+    if !current_user || current_user.status != "1"
+      redirect_to new_user_session_path
+    end
     @gvg_core = GvgCore.new
   end
 
   # GET /gvg_cores/1/edit
   def edit
+    if !current_user || current_user.status != "1"
+      redirect_to new_user_session_path
+    end
   end
 
   # POST /gvg_cores

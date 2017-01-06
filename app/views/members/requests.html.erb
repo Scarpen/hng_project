@@ -1,24 +1,52 @@
-<h3>Solicitações</h3>
-<h5>Permissão de Acesso</h5>
-<% @access.each do |member| %>
 
-<strong> <%= member.nick %> </strong>
-<p> Recrutador: <%= member.recruiter %> </p>
-<p> <%= member.recruiter %> </p>
-<p>
-<%= link_to 'Aceitar', accept_request_members_path(user: member.id) %>
-<%= link_to 'Recusar', refuse_request_members_path(user: member.id) %>
-</p>
-<% end %>
-<h5>Recrutamento</h5>
-<% @recruitment.each do |member| %>
 
-<strong> <%= member.nick %> </strong>
-<p> Razão: <%= member.reason %> </p>
-<p> <%= member.reason %> </p>
-<p>
-<%= link_to 'Aceitar', accept_request_members_path(user: member.id) %>
-<%= link_to 'Recusar', refuse_request_members_path(user: member.id) %>
-</p>
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Solicitações</h3>
+      </div>
+    </div>
+    <div class="row">
 
-<% end %>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel" style="height:600px;">
+          <div class="x_title">
+			 <h5> <strong> Permissão de Acesso </strong> </h5> 
+			 <div class="row">
+				<% @access.each do |member| %>
+				  <div class="col-sm-6 col-md-3">
+				    <div class="thumbnail" style="height: 228px">
+				      <%= image_tag member.avatar.url, :class => "img-circle profile_img", style: "height: 65px; width: 65px;"  %>
+				      <div class="caption">
+				        <h3><%= member.nick %></h3>
+				        <p> Recrutador: <%= member.recruiter %> </p>
+				        <p><%= link_to 'Aceitar', accept_request_members_path(user: member.id), class: "btn btn-primary" %> <%= link_to 'Recusar', refuse_request_members_path(user: member.id), class: "btn btn-default" %> 
+				        </p>
+				      </div>
+				    </div>
+				  </div>
+				<% end %>
+			</div>
+			 <h5> <strong> Recrutamento </strong> </h5> 
+			 <div class="row">
+			<% @recruitment.each do |member| %>
+				<div class="col-sm-6 col-md-3">
+				    <div class="thumbnail" style="height: 228px">
+				      <%= image_tag member.avatar.url, :class => "img-circle profile_img", style: "height: 65px; width: 65px;"  %>
+				      <div class="caption">
+				        <h3><%= member.nick %></h3>
+				        <p> Razão: <%= member.reason %> </p>
+				        <p><%= link_to 'Aceitar', accept_request_members_path(user: member.id), class: "btn btn-primary" %> <%= link_to 'Recusar', refuse_request_members_path(user: member.id), class: "btn btn-default" %> 
+				        </p>
+				      </div>
+				    </div>
+				  </div>
+			<% end %>
+			</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

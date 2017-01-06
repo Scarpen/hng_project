@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 protected
 	def configure_permitted_parameters
+		
 		devise_parameter_sanitizer.for(:sign_up) << :nick
 		devise_parameter_sanitizer.for(:sign_up) << :alt1		
 		devise_parameter_sanitizer.for(:sign_up) << :alt2

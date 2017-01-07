@@ -24,29 +24,39 @@
 			<th> Cargo </th>
 			<th> Chars Alternativos </th>
 			<th> Arma </th>
+			<th> Time de GvG </th>
 			<th> Último Login </th>
 		</tr>
 	</thead>
 	<tbody>
+    
 	<% @members.each do |member| %>
 		<tr>
-			<td> <%= member.nick %> </td>
-			<td> <%= member.guild_role.name %>
+			<td> <%= member.nick %> <%= link_to show_member_members_path(user: member) do %> <i class="fa fa-eye"></i> <% end %> </td>
+			<td id="role_<%= member.id %>"><%= member.guild_role.name %>
 				<% if user_signed_in? %>
 					<% if current_user.guild_role.permition > member.guild_role.permition + 1 %>
-						<%= link_to  promote_member_members_path(user: member.id) do %>
-							<i class="glyphicon glyphicon-menu-up" style="color: green"> </i>
-						<% end %>
+							<i class="glyphicon glyphicon-menu-up" style="color: green; cursor:pointer" onclick="promote(<%=member.id%>)"></i>
 					<% end %>
 					<% if current_user.guild_role.permition > member.guild_role.permition and member.guild_role_id > 1 %>
-						<%= link_to demote_member_members_path(user: member.id) do %>
-						<i class="glyphicon glyphicon-menu-down" style="color: red"> </i>
-						<% end %>
+						<i class="glyphicon glyphicon-menu-down" style="color: red; cursor:pointer" onclick="demote(<%=member.id%>)"></i>
 					<% end %>
 				<% end %>
-				 </td>
+			</td>
 			<td> <%= member.alt1 %>, <%= member.alt2 %> </td>
 			<td> <%= member.item_id %> </td>
+			<td id="gvg_core_<%= member.id %>"> <% if member.gvg_core && member.core_status == 1 %>
+					<%= member.gvg_core.name %>
+          <% elsif member.gvg_core == current_user.gvg_core && member.core_status == 2%>
+          Invite Pendente
+				 <% else %>
+				 	Sem Time de GvG 
+          <% if current_user.gvg_core %>
+            <% if current_user.gvg_core.user == current_user && member.core_status != 2 %> 
+            <i class="fa fa-group" style="color: green; cursor:pointer" onclick="invite(<%= member.id %>)"> </i> <%end%>
+  				 <% end %>
+         <% end %>
+			</td>
 			<td> <% if member.last_sign_in_at %> <%= member.last_sign_in_at.to_formatted_s(:short) %> <% end %></td>
 
 		</tr>
@@ -58,11 +68,59 @@
     </div>
   </div>
 </div>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.css"/>
 
- 
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/dt-1.10.13/cr-1.3.2/r-2.1.0/datatables.js"></script>
 
 <script>
-$('#members_table').dataTable();
+$('#members_table').dataTable( {
+  paginate: false,
+  scrollY: 300
+} );
+</script>
+<script>
+function demote(user_id){
+$.ajax({
+  type:"GET",
+  url:"<%= demote_member_members_path%>",
+  dataType:"json",
+  data: {user: user_id},
+  success:function(result){
+  	var role = "role_"+result.user_id;
+  	if (result.guild_role_id == 1){
+  	document.getElementById(role).innerHTML = result.guild_role_name + " <i class='glyphicon glyphicon-menu-up' style='color: green; cursor:pointer' onclick='promote("+result.user_id+")'> </i>";
+  	}else{
+  		document.getElementById(role).innerHTML = result.guild_role_name + " <i class='glyphicon glyphicon-menu-up' style='color: green; cursor:pointer' onclick='promote("+result.user_id+")'> </i> <i class='glyphicon glyphicon-menu-down' style='color: red; cursor:pointer' onclick='demote("+result.user_id+")'> </i>";
+  	}
+  }
+})
+};
+
+function promote(user_id){
+$.ajax({
+  type:"GET",
+  url:"<%= promote_member_members_path%>",
+  dataType:"json",
+  data: {user: user_id},
+  success:function(result){
+  	var role = "role_"+result.user_id;
+  	if (result.guild_role_id == <%= current_user.guild_role.permition - 1%>){
+  	document.getElementById(role).innerHTML = result.guild_role_name + " <i class='glyphicon glyphicon-menu-down' style='color: red; cursor:pointer' onclick='demote("+result.user_id+")'> </i>";
+  	}else{
+  		document.getElementById(role).innerHTML = result.guild_role_name + " <i class='glyphicon glyphicon-menu-up' style='color: green; cursor:pointer' onclick='promote("+result.user_id+")'> </i> <i class='glyphicon glyphicon-menu-down' style='color: red; cursor:pointer' onclick='demote("+result.user_id+")'> </i>";
+  	}
+  }
+})
+};
+
+function invite(user_id){
+$.ajax({
+  type:"POST",
+  url:"<%= invite_core_gvg_cores_path %>",
+  dataType:"json",
+  data: {user: user_id},
+  success:function(result){
+    var core_id = "gvg_core_"+user_id;
+    document.getElementById(core_id).innerHTML = "Invite Pendente";
+  }
+})
+};
 </script>

@@ -19,9 +19,9 @@
 
         <div class="x_panel">
           <% if current_user.guild_role.permition >= Permition.find(6).permition %>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Novo Evento
-          </button>
+            <div class="btn btn-primary" onclick="openNewModal()">
+              Novo Evento
+            </div>
           <% end %>
           <div id='calendar'></div>
         </div>
@@ -38,6 +38,8 @@
 </div>
 
 <script>
+
+
   $('#calendar').fullCalendar({
     lang: "pt-br",
     buttonText: {
@@ -78,4 +80,9 @@
         }
     }
   });
+</script>
+<script>
+function openNewModal(){
+  $("#newModal").modal('show'); 
+};
 </script>

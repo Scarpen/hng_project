@@ -19,11 +19,12 @@
 
         <div class="x_panel">
 
-          <% if current_user.guild_role.permition >= Permition.find(3).permition %>
-            <%= link_to "Novo Time",new_gvg_core_path, class: "btn btn-primary" %>
-
-          <% elsif current_user.gvg_core %>
+          <% if current_user.gvg_core && current_user.core_status == 1 %>
             <h2> Você já faz parte de um core </h2>
+          <% elsif current_user.gvg_core && current_user.core_status == 2 %>
+            <h2> Você foi invitado para o time: <%= current_user.gvg_core.name %> <%= link_to "Aceitar",accept_core_gvg_cores_path, class: "btn btn-success" %> <%= link_to "Rejeitar",reject_core_gvg_cores_path, class: "btn btn-danger" %></h2>
+          <% elsif current_user.guild_role.permition >= Permition.find(3).permition %>
+            <%= link_to "Novo Time",new_gvg_core_path, class: "btn btn-primary" %>
           <% else %>
             <h2> Você precisa ter cargo de warmaster ou superior para criar um novo time de GvG</h2>
           <% end %>

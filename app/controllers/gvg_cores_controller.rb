@@ -42,6 +42,7 @@ class GvgCoresController < ApplicationController
     respond_to do |format|
       if @gvg_core.save
         current_user.gvg_core_id = @gvg_core.id
+        current_user.core_status = 1
         current_user.save
         format.html { redirect_to @gvg_core, notice: 'Gvg core was successfully created.' }
         format.json { render :show, status: :created, location: @gvg_core }
@@ -75,6 +76,47 @@ class GvgCoresController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def invite_core
+    user = User.find(params[:user])
+    user.core_status = 2
+    user.gvg_core = current_user.gvg_core
+    if user.save
+      render :json => {
+        status: "success"
+      }
+  else
+      render :json => {
+        status: "failed"
+      } 
+  end
+
+  end
+
+  def accept_core
+    current_user.core_status = 1
+    current_user.save
+    redirect_to gvg_cores_path
+  end
+
+  def reject_core
+    if params[:user]
+      user = User.find(params[:user])
+    else
+      user = current_user
+    end
+    gvg = user.gvg_core
+    user.core_status = 3
+    user.gvg_core = nil
+    user.save
+    if params[:user]
+      redirect_to gvg
+    else
+      redirect_to gvg_cores_path
+    end
+
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

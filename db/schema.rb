@@ -22,14 +22,14 @@ ActiveRecord::Schema.define(version: 20170106193950) do
 
   create_table "events", force: :cascade do |t|
     t.string   "title",       limit: 255
-    t.string   "description", limit: 255
+    t.text     "description", limit: 65535
     t.date     "event_date"
     t.time     "event_start"
     t.time     "event_end"
     t.boolean  "important"
     t.integer  "user_id",     limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "guild_roles", force: :cascade do |t|
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20170106193950) do
     t.integer  "item_id",                limit: 4
     t.integer  "player_type_id",         limit: 4
     t.integer  "class_role_id",          limit: 4
-    t.integer  "guild_role_id",          limit: 4,     default: 1,  null: false
+    t.integer  "guild_role_id",          limit: 4
     t.integer  "gvg_core_id",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"

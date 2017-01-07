@@ -9,6 +9,10 @@ class MembersController < ApplicationController
 		@members = User.where(status: "1")
 	end
 
+  def show_member
+    @user = User.find(params[:user])
+  end
+
 	def requests
     if !current_user || current_user.status != "1"
       redirect_to new_user_session_path
@@ -36,14 +40,26 @@ class MembersController < ApplicationController
   def promote_member
   	user = User.find(params[:user])
     user.guild_role_id = user.guild_role_id + 1
-    user.save
-    redirect_to members_path
+    if user.guild_role_id <= 7
+      user.save
+      render :json => {
+        :user_id => "#{user.id}",
+        :guild_role_name => "#{user.guild_role.name}",
+        :guild_role_id => "#{user.guild_role.id}"
+      }
+    end
   end
 
   def demote_member
   	user = User.find(params[:user])
     user.guild_role_id = user.guild_role_id - 1
     user.save
-    redirect_to members_path
+    if user.guild_role_id >= 1
+    render :json => {
+      :user_id => "#{user.id}",
+      :guild_role_name => "#{user.guild_role.name}",
+      :guild_role_id => "#{user.guild_role.id}"
+    }
+    end
   end
 end

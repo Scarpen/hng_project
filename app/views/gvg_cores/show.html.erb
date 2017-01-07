@@ -36,8 +36,40 @@
             <br>
             <% if @gvg_core.user == current_user %>
             <%= link_to 'Deletar Time',  @gvg_core,  method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger" %>
+            <%= link_to 'Editar Time',  edit_gvg_core_path(@gvg_core), class: "btn btn-default" %>
+            <% elsif current_user.gvg_core == @gvg_core %>
+              <%= link_to 'Sair do Time',  reject_core_gvg_cores_path, class: "btn btn-danger" %>
             <% end %>
           </div>
+          <br>
+          <table class="table table-hover" id="members_table">
+            <thead>
+              <tr> 
+                <th> Nick </th>
+                <th> Cargo </th>
+                <th> Chars Alternativos </th>
+                <th> Arma </th>
+                <th> Último Login </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @gvg_core.users.each do |user|%>
+              <tr>
+                <td> <%= user.nick %> 
+                  <% if current_user == @gvg_core.user && user != current_user %> 
+                    <%= link_to reject_core_gvg_cores_path(user: user) do %>
+                      <i class="fa fa-close" style="color: red;"> </i>
+                    <%end %>
+                  <%end%> 
+                </td>
+                <td> <%= user.guild_role.name %> </td>
+                <td> <%= user.alt1 %>, <%= user.alt2 %> </td>
+                <td> <%= user.item_id %> </td>
+                <td> <% if user.last_sign_in_at %> <%= user.last_sign_in_at.to_formatted_s(:short) %> <%end%> </td>
+                <tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

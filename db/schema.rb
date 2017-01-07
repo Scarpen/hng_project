@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106193950) do
+ActiveRecord::Schema.define(version: 20170107154026) do
 
   create_table "class_roles", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20170106193950) do
     t.integer  "gvg_core_id",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "core_status",            limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

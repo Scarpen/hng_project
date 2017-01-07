@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :gvg_cores
+  resources :gvg_cores do
+    collection do
+      post 'invite_core'
+      get 'accept_core'
+      get 'reject_core'
+    end
+  end
+
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -32,6 +39,7 @@ Rails.application.routes.draw do
       get 'refuse_request'
       get 'promote_member'
       get 'demote_member'
+      get 'show_member'
     end
   end
   # Example resource route with options:

@@ -30,4 +30,4 @@ GuildRole.create(id: 6, name: 'Tesoureiro', function: '', permition: 6)
 GuildRole.create(id: 7, name: 'Braço Direito', function: '', permition: 7)
 GuildRole.create(id: 8, name: 'Lider', function: '', permition: 8)
 
-User.create(email: 'administrador@honornglory.com', status: 1, guild_role_id: 7, password: "12345678", password_confirmation: "12345678", nick: "Admin")
+User.create(email: 'administrador@honornglory.com', status: 1, guild_role_id: 8, password: "12345678", password_confirmation: "12345678", nick: "Admin")

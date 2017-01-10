@@ -53,7 +53,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @gvg_core.users.each do |user|%>
+              <% @gvg_core.users.where(core_status: 1).each do |user|%>
               <tr>
                 <td> <%= user.nick %> 
                   <% if current_user == @gvg_core.user && user != current_user %> 

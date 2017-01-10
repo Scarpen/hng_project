@@ -84,11 +84,12 @@ ActiveRecord::Schema.define(version: 20170107154026) do
     t.integer  "item_id",                limit: 4
     t.integer  "player_type_id",         limit: 4
     t.integer  "class_role_id",          limit: 4
-    t.integer  "guild_role_id",          limit: 4
+    t.integer  "guild_role_id",          limit: 4,     default: 1,  null: false
     t.integer  "gvg_core_id",            limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "core_status",            limit: 4
+    t.boolean  "recruitment_access"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

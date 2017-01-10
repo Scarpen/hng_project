@@ -25,13 +25,13 @@
 //= require js/flot/curvedLines.js
 //= require js/flot/jquery.flot.resize.js
 //= require js/progressbar/bootstrap-progressbar.min.js
-
+//= require datatables.js
 //= require js/icheck/icheck.min.js
 
 //= require js/moment/moment.min.js
 //= require js/calendar/fullcalendar.min.js
 //= require js/calendar/pt-br.js
-//= require datatables.js
+
 
 //= require js/datepicker/daterangepicker.js
 
@@ -42,3 +42,4 @@
 //= require js/nprogress.js
 
 //= require flash.js
+

@@ -17,6 +17,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "dataTables.bootstrap.css";
 @import "font-awesome";
 @import "css/animate.min";
 @import "css/custom";
@@ -27,7 +28,7 @@
 @import "css/ion.rangeSlider.skinFlat";
 @import "pace";
 @import "css/calendar/fullcalendar.css";
-@import "dataTables.bootstrap.css";
+
 
 .control-label-form{
 padding-top:8px;
@@ -36,4 +37,9 @@ padding-top:8px;
 }
 .icheckbox_flat-green{
 	margin-right:5px;
+}
+
+.nav-collapse.collapse {
+height: auto !important;
+overflow: visible !important;
 }

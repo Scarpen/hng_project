@@ -28,6 +28,8 @@ gem "font-awesome-rails"
 gem 'carrierwave'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-wysihtml5-rails'
+gem 'unicorn'
+gem 'pg'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

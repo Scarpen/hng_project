@@ -55,7 +55,7 @@
             <li><a href="javascript:void(0)"><i class="fa fa-photo"></i> Mídia </a>
             </li>
 
-            <% if current_user.recruitment_access %>
+            <% if current_user.recruitment_access || current_user.guild_role.id > 6 %>
             <li><%= link_to requests_path do %><i class="fa fa-users"></i> Requisições Pendentes <% end %>
             </li>
             <% end %>

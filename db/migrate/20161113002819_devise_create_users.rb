@@ -34,6 +34,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :alt1
       t.string :alt2
       t.boolean :gvg
+
+
       t.string :status
       t.string :avatar
       

@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.13', '< 0.5'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -33,6 +33,12 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+group :development do
+  gem 'capistrano', '~> 3.7', '>= 3.7.1'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-passenger', '~> 0.2.0'
+  gem 'capistrano-rbenv', '~> 2.1'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 # Use mysql as the database for Active Record
 gem 'pg'
+gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -27,6 +28,9 @@ gem 'simple_form'
 gem "font-awesome-rails"
 gem 'carrierwave'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-wysihtml5-rails'
+gem 'unicorn'
+gem 'pg'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

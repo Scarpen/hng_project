@@ -70,7 +70,18 @@
       <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Interesses / Como pode ajudar a guild</label>
 
       <div class="col-md-6 col-sm-6 col-xs-12" id="gvg_div">
-        <%= f.input :gvg, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "Fazer GvG" %>
+        <%= f.input :gvg, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "GvG" %>
+        <%= f.input :raids, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "Raids" %>
+        <%= f.input :pk, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "PK" %>
+        <%= f.input :zvz, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "ZvZ" %>
+        <%= f.input :gathering, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "Gathering" %>
+        <%= f.input :dungeons, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "Dungeons" %>
+        <%= f.input :crafting, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "Crafting" %>
+        <%= f.input :farming, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "Farming" %>
+        <%= f.input :construct, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "Construir Territorios" %>
+        <%= f.input :territory_feed, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "Alimentação de Territorios" %>
+        <%= f.input :castle, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "Guerra de Castelos" %>
+        <%= f.input :warcamp, input_html: { class: 'flat', style:"opacity:0%, position:absolute" }, label: "Barracas" %>
       </div>
 
 
@@ -112,30 +123,6 @@
       <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Hora de Atividade</label>
       <div class="col-md-6 col-sm-6 col-xs-12">
         <%= f.input :activity_hour, input_html: { class: 'form-control' }, placeholder: "Hora de Atividade", label: false %>
-      </div>
-      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
-    </div>
-
-      <div class="form-group row">
-      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Arma</label>
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <%= f.input :item_id, input_html: { class: 'form-control' }, label: false, placeholder: "Arma" %>
-      </div>
-      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Tipo de Jogador</label>
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <%= f.input :player_type_id, input_html: { class: 'form-control' }, label: false, placeholder: "Tipo de Jogador" %>
-      </div>
-      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Classe</label>
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <%= f.input :class_role_id, input_html: { class: 'form-control' }, label: false, placeholder: "Classe" %>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-12"> </div>
     </div>

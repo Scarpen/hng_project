@@ -11,3 +11,5 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( footermanifest.js)
 Rails.application.config.assets.precompile += %w( datatables.js )
+Rails.application.config.assets.precompile << Proc.new { |path, fn| fn =~ /vendor\/assets/ && !%w(.js .css).include?(File.extname(path)) }
+Rails.application.config.assets.precompile << Proc.new { |path, fn| fn =~ /vendor\/assets/ && %w(.js .css).include?(File.extname(path)) }

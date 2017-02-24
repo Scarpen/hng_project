@@ -9,6 +9,7 @@ require "capistrano/deploy"
 require 'capistrano/rails'
 require 'capistrano/passenger'
 require 'capistrano/rbenv'
+require 'capistrano/rails/collection'
 set :rbenv_type, :user
 set :rbenv_ruby, '2.1.10'
 # require "capistrano/scm/hg"

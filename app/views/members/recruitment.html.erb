@@ -49,7 +49,7 @@
               <% if @validatable %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %>
-      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Senha</label>
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Senha<br> <i> Mínimo de 8 Digítos </i></label>
       <div class="col-md-6 col-sm-6 col-xs-12">
 
         <%= f.password_field :password, class: 'form-control', placeholder: "Senha", label: false, autocomplete: "off" %>

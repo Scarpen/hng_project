@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
-//= require fullcalendar.min.js
 //= require jquery_ujs
 //= require turbolinks
 //= require js/flot/jquery.flot.js
@@ -26,11 +25,15 @@
 //= require js/flot/jquery.flot.resize.js
 //= require js/progressbar/bootstrap-progressbar.min.js
 //= require datatables.js
+//= require js/calendar/fullcalendar.min.js
+//= require js/calendar/pt-br.js
 //= require js/icheck/icheck.min.js
 //= require js/editor/bootstrap-wysiwyg.js
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales
 //= require js/moment/moment.min.js
+//= require js/calendar/fullcalendar.min.js
+//= require js/calendar/pt-br.js
 //= require js/datepicker/daterangepicker.js
 
 //= require js/chartjs/chart.min.js

@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
-//= require js/calendar/fullcalendar.min.js
-//= require js/calendar/pt-br.js
 //= require fullcalendar.min.js
 //= require jquery_ujs
 //= require turbolinks

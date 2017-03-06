@@ -11,3 +11,7 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( footermanifest.js)
 Rails.application.config.assets.precompile += %w( datatables.js )
+Rails.application.config.assets.precompile += %w( dataTables.bootstrap.css )
+Rails.application.config.assets.precompile += %w( fullcalendar.min.js )
+Rails.application.config.assets.precompile += %w( pt-br.js )
+Rails.application.config.assets.precompile += %w( fullcalendar.min.css )

@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
-
+//= require js/calendar/fullcalendar.min.js
+//= require js/calendar/pt-br.js
+//= require fullcalendar.min.js
 //= require jquery_ujs
 //= require turbolinks
 //= require js/flot/jquery.flot.js
@@ -31,10 +33,6 @@
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales
 //= require js/moment/moment.min.js
-//= require js/calendar/fullcalendar.min.js
-//= require js/calendar/pt-br.js
-//= require fullcalendar.min.js
-
 //= require js/datepicker/daterangepicker.js
 
 //= require js/chartjs/chart.min.js

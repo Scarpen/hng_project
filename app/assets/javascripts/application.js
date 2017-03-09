@@ -11,8 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-
-
 //= require jquery_ujs
 //= require turbolinks
 //= require js/flot/jquery.flot.js
@@ -33,7 +31,6 @@
 //= require js/moment/moment.min.js
 //= require js/calendar/fullcalendar.min.js
 //= require js/calendar/pt-br.js
-
 
 //= require js/datepicker/daterangepicker.js
 

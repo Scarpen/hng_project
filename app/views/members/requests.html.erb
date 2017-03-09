@@ -35,12 +35,12 @@
 			 <div class="row">
 			<% @recruitment.each do |member| %>
 				<div class="col-sm-6 col-md-3">
-				    <div class="thumbnail" style="height: 350px">
+				    <div class="thumbnail" style="height: 370px">
 				      <%= image_tag member.avatar.url, :class => "img-circle profile_img", style: "height: 65px; width: 65px;"  %>
 				      <div class="caption">
 				        <h3><%= member.nick %></h3>
-				        <p> Razão que deseja entrar na guild: <%= member.reason %> </p>\
-				        <p> Guild Anterior: <%= member.last_guild %> </p>\
+				        <p> Razão que deseja entrar na guild: <%= member.reason %> </p>
+				        <p> Guild Anterior: <%= member.last_guild %> </p>
 				        <p> Tipo de Conta: <%= member.account%> </p>
 				        <p> Recrutador: <%= member.recruiter %> </p>
 				        <p> Interesses: <%= interess_list(member) %> </p>

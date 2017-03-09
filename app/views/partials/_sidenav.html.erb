@@ -37,7 +37,7 @@
             </li>
 
 
-            <li><a href="javascript:void(0)"><i class="fa fa-bullhorn "></i> Comunicados </a>
+            <li><a href="javascript:void(0)"><i class="fa fa-bullhorn "></i> Comunicados <span class="badge bg-green pull-right">Em breve</span></a>
             </li>
 
             <li><%= link_to events_path do %><i class="fa fa-calendar"></i> Eventos <% end %>
@@ -46,13 +46,16 @@
             <li><%= link_to gvg_cores_path do %><i class="fa fa-users"></i> Times de GvG <% end %>
             </li>
 
-            <li><a href="javascript:void(0)"><i class="fa fa-gavel"></i> Crafters </a>
+            <li><%= link_to gvgs_path do %><i class="fa fa-flag-checkered"></i> GvGs <% end %>
             </li>
 
-            <li><a href="javascript:void(0)"><i class="fa fa-comments-o"></i> Tópicos para Discussão </a>
+            <li><a href="javascript:void(0)"><i class="fa fa-gavel"></i> Crafters <span class="badge bg-green pull-right">Em breve</span></a>
             </li>
 
-            <li><a href="javascript:void(0)"><i class="fa fa-photo"></i> Mídia </a>
+            <li><a href="javascript:void(0)"><i class="fa fa-comments-o"></i> Tópicos para Discussão <span class="badge bg-green pull-right">Em breve</span> </a>
+            </li>
+
+            <li><a href="javascript:void(0)"><i class="fa fa-photo"></i> Mídia <span class="badge bg-green pull-right">Em breve</span></a>
             </li>
 
             <% if current_user.recruitment_access || current_user.guild_role.id > 6 %>

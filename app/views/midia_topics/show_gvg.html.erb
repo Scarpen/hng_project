@@ -1,0 +1,106 @@
+
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3 style="margin-left: 20px; margin-top:15px;">GvGs</h3>
+      </div>
+
+      <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+
+      <div class="col-md-12 col-sm-12 col-xs-12">
+
+        <div class="x_panel">
+
+          <h2> HnG <%= @gvg.result_hng %> X <%= @gvg.result_other %> <%= @gvg.enemy %> <%if current_user == @gvg.user || current_user.guild_role.permition > 6%>
+                  <span> 
+                    <%= link_to "", edit_gvg_path(@gvg.id), class: "glyphicon glyphicon-pencil", style: "text-decoration: none" %>
+                   </span>
+                    <span> <%= link_to '', destroy_gvg_path(id: @gvg.id), method: :delete, class: "glyphicon glyphicon-trash", style: "text-decoration: none", data: { confirm: 'Você tem certeza que deseja excluir essa GvG?'} %> </span>
+                  <%end%> </h2>
+          <p> <strong> Core: </strong> <%= @gvg.gvg_core.name %> <br>
+           <strong> Jogadores: </strong> <%= @gvg.players %> <br>
+           <strong> Mapa: </strong> <%= @gvg.map %> <br>
+           <strong> Tipo de Mapa: </strong> <%= @gvg.gvg_type %> <br>
+           <strong> Adversarios: </strong> <%= @gvg.enemies %> </p>
+          <div style="position:relative;height:0;padding-bottom:56.25%"> <iframe src="https://www.youtube.com/embed/<%= @gvg.video %>?ecver=2" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe> </div>
+
+          <div style="text-align:left;" id="comments_<%= @gvg.id %>">  
+          <ul class="list-unstyled msg_list">
+            <% @gvg.comments.each do |comment| %>
+              <li style="padding: 5px !important; width: 99% !important">
+                <a style="text-decoration: none">
+                  <span class="image">
+                    <%= image_tag(comment.user.avatar, style: "height: 65px; width: 65px") %>
+                  </span>
+                  <span>
+                    <span><strong><%= comment.user.nick %></strong></span>
+                    <span class="time"><%= time_ago_in_words(comment.created_at) %></span>
+                  </span>
+                  <span class="message">
+                          <%= comment.description %>
+                  </span>
+                </a>
+                  <% if comment.user == current_user %>
+                  <span> <a href = "#" class="glyphicon glyphicon-pencil drop_icon" data-toggle="modal" data-target="#editcomment_<%= comment.id %>" style= "text-decoration: none !important">  </a>
+                  </span>
+                  <% end %>
+                  <%if current_user == @gvg.user || current_user.guild_role.permition > 6 || comment.user == current_user%>
+                    <span> <%= link_to '', destroy_comment_path(id: comment.id), method: :delete, class: "glyphicon glyphicon-trash", style: "text-decoration: none", data: { confirm: 'Você tem certeza que deseja excluir esse comentário?'} %> </span>
+                  <%end%>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+          <%= simple_form_for @comment, :url => create_comment_path(@comment) do |f| %>
+            <div class="form-group row">
+              <div class="col-md-12 col-sm-6 col-xs-12">
+                    <%= f.input :description, input_html: { class: 'form-control' }, placeholder: "Escreva um comentário", label: false %>
+              </div>
+            </div>
+            <%= f.input :midia_topic_id, :as => :hidden, :input_html => {:value =>  @gvg.id} %>
+              <div class="actions">
+                <%= f.submit "Criar Comentário", class: "btn btn-primary" %>
+              </div>
+          <% end %>
+
+
+        </div>
+      </div>
+    <br>
+
+    <% current_user.comments.each do |comment|%>
+      <div class="modal fade" id="editcomment_<%= comment.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Criar novo evento</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for comment, :url => update_comment_path(:id => comment.id) do |f| %>
+        <%= f.input :description, label: false%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" style= "margin-bottom: 0px;">Close</button>
+        <%= f.submit "Salvar", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+  <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

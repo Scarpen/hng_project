@@ -12,15 +12,18 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel" style="height:600px;">
           <div class="x_title">
-			 <h5> <strong> Permissão de Acesso </strong> </h5> 
+			 <h5> <strong> Permissão de Acesso (<%= @access.size%>) </strong> </h5> 
 			 <div class="row">
-				<% @access.each do |member| %>
+				<% @access.order(:nick).each do |member| %>
 				  <div class="col-sm-6 col-md-3">
-				    <div class="thumbnail" style="height: 228px">
+				    <div class="thumbnail" style="height: 350px">
 				      <%= image_tag member.avatar.url, :class => "img-circle profile_img", style: "height: 65px; width: 65px;"  %>
 				      <div class="caption">
 				        <h3><%= member.nick %></h3>
+				        <p> Tipo de Conta: <%= member.account %> </p>
 				        <p> Recrutador: <%= member.recruiter %> </p>
+				        <p> Interesses: <%= interess_list(member) %> </p>
+				        <p> Alternativos: <%= member.alt1 %>,<%= member.alt2%> </p>
 				        <p><%= link_to 'Aceitar', accept_request_members_path(user: member.id), class: "btn btn-primary" %> <%= link_to 'Recusar', refuse_request_members_path(user: member.id), class: "btn btn-default" %> 
 				        </p>
 				      </div>
@@ -28,7 +31,7 @@
 				  </div>
 				<% end %>
 			</div>
-			 <h5> <strong> Recrutamento </strong> </h5> 
+			 <h5> <strong> Recrutamento (<%= @recruitment.size%>) </strong> </h5> 
 			 <div class="row">
 			<% @recruitment.each do |member| %>
 				<div class="col-sm-6 col-md-3">
@@ -36,7 +39,12 @@
 				      <%= image_tag member.avatar.url, :class => "img-circle profile_img", style: "height: 65px; width: 65px;"  %>
 				      <div class="caption">
 				        <h3><%= member.nick %></h3>
-				        <p> Razão: <%= member.reason %> </p>
+				        <p> Razão que deseja entrar na guild: <%= member.reason %> </p>\
+				        <p> Guild Anterior: <%= member.last_guild %> </p>\
+				        <p> Tipo de Conta: <%= member.account%> </p>
+				        <p> Recrutador: <%= member.recruiter %> </p>
+				        <p> Interesses: <%= interess_list(member) %> </p>
+				        <p> Alternativos: <%= member.alt1 %>,<%= member.alt2%> </p>
 				        <p><%= link_to 'Aceitar', accept_request_members_path(user: member.id), class: "btn btn-primary" %> <%= link_to 'Recusar', refuse_request_members_path(user: member.id), class: "btn btn-default" %> 
 				        </p>
 				      </div>

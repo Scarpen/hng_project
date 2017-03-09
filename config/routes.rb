@@ -23,6 +23,16 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   get 'sign_up' => 'members#sign_up'
+  get 'gvgs' => 'midia_topics#gvgs'
+  get 'gvgs/new_gvg' => 'midia_topics#new_gvg', as: :new_gvg
+  get 'gvgs/:gvg_id/edit' => 'midia_topics#edit_gvg', as: :edit_gvg
+  patch 'gvgs/update' => 'midia_topics#update_gvg', as: :update_gvg
+  get 'gvgs/:gvg_id' => 'midia_topics#show_gvg', as: :show_gvg
+  post 'gvgs/create_gvg' => 'midia_topics#create_gvg'
+  delete 'gvgs/destroy' => 'midia_topics#destroy_gvg', as: :destroy_gvg
+  post 'gvgs/create_comment' => 'midia_topics#create_comment', as: :create_comment
+  patch 'update_comment' => 'midia_topics#update_comment', as: :update_comment
+  delete 'destroy_comment'=> 'midia_topics#destroy_comment', as: :destroy_comment
   get 'recruitment' => 'members#recruitment'
   get 'requests' => 'members#requests'
 

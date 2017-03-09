@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220233633) do
+ActiveRecord::Schema.define(version: 20170305052846) do
 
   create_table "class_roles", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "description",    limit: 65535
+    t.integer  "user_id",        limit: 4
+    t.integer  "comment_id",     limit: 4
+    t.integer  "midia_topic_id", limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -49,6 +58,25 @@ ActiveRecord::Schema.define(version: 20170220233633) do
     t.integer  "user_id",                limit: 4
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+  end
+
+  create_table "midia_topics", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.string   "description",  limit: 255
+    t.integer  "user_id",      limit: 4
+    t.integer  "result_hng",   limit: 4
+    t.integer  "result_other", limit: 4
+    t.string   "enemy",        limit: 255
+    t.integer  "gvg_core_id",  limit: 4
+    t.string   "killboard",    limit: 255
+    t.string   "video",        limit: 255
+    t.string   "midia_type",   limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "players",      limit: 255
+    t.string   "enemies",      limit: 255
+    t.string   "map",          limit: 255
+    t.string   "gvg_type",     limit: 255
   end
 
   create_table "permitions", force: :cascade do |t|

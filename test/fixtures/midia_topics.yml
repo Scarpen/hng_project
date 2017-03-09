@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  user_id: 1
+  result_hng: 1
+  result_other: 1
+  enemy: MyString
+  gvg_core_id: 1
+  killboard: MyString
+  video: MyString
+
+two:
+  title: MyString
+  description: MyString
+  user_id: 1
+  result_hng: 1
+  result_other: 1
+  enemy: MyString
+  gvg_core_id: 1
+  killboard: MyString
+  video: MyString

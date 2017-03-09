@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use mysql as the database for Active Record
-gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -28,7 +27,6 @@ gem "font-awesome-rails"
 gem 'carrierwave'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-wysihtml5-rails'
-gem 'unicorn'
 gem 'pg'
 
 # Use ActiveModel has_secure_password
@@ -41,6 +39,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano-passenger', '~> 0.2.0'
   gem 'capistrano-rbenv', '~> 2.1'
+  gem 'capistrano-rails-console', require: false
 end
 
 # Use Capistrano for deployment
@@ -49,6 +48,7 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'mysql2'
 end
 
 group :development do

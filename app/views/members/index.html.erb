@@ -17,6 +17,9 @@
 
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
+          <span> Léndarios: <%= @members.where(account: "Lendária").size %></span> / 
+          <span> Épicos: <%= @members.where(account: "Épica").size %></span> / 
+          <span>Veteranos: <%= @members.where(account: "Veterana").size %></span>
     <table class="table table-hover" id="members_table">
 	<thead>
 		<tr> 
@@ -73,7 +76,7 @@
 <script>
 $('#members_table').dataTable( {
   paginate: false,
-  scrollY: 300
+  scrollY: 700
 } );
 </script>
 <script>

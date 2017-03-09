@@ -49,7 +49,7 @@
               <% if @validatable %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %>
-      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Senha</label>
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Senha<br> <i> Mínimo de 8 Digítos </i></label>
       <div class="col-md-6 col-sm-6 col-xs-12">
 
         <%= f.password_field :password, class: 'form-control', placeholder: "Senha", label: false, autocomplete: "off" %>
@@ -129,6 +129,7 @@
     <div class="ln_solid"></div>
 
     <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+<p> <b> Ao entrar na guilda você está de acordo com todas as <a target="_blank" href="https://goo.gl/ehbHWw" style="text-decoration: underline"> Regras</a>, lembrando que as mesmas podem ser alteradas em qualquer momento. </b> </p>
        <%= f.submit "Enviar", class: "btn btn-primary" %>
     </div>
 <% end %>

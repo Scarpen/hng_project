@@ -2,13 +2,11 @@
 <html>
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "Honor n Glory" %> </title>
-
+  <%= favicon_link_tag 'hng.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
 
 <body class="nav-md ">
@@ -21,13 +19,11 @@
 <%= render "partials/sidenav" %>
 <% end %>
 <% end %>
-
 <%= render "partials/topnav" %>
-
 <%= yield %>
-
   <%= render "partials/footer" %>
   <%= javascript_include_tag 'footermanifest', 'data-turbolinks-track' => true %>
-
 </body>
+<% current_user.last_sign_in_at = Time.now if current_user %>
+<% current_user.save %>
 </html>

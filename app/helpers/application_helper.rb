@@ -27,6 +27,8 @@ module ApplicationHelper
 
 		if list.size == 1 
 			return list[0] + "."
+		elsif list.size == 0
+			return " "
 		else 
 			result = ""
 			for i in 0..list.size - 2

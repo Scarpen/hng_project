@@ -37,7 +37,7 @@
             </li>
 
 
-            <li><a href="javascript:void(0)"><i class="fa fa-bullhorn "></i> Comunicados <span class="badge bg-green pull-right">Em breve</span></a>
+            <li><%= link_to notifies_path do %><i class="fa fa-bullhorn "></i> Comunicados <% end %>
             </li>
 
             <li><%= link_to events_path do %><i class="fa fa-calendar"></i> Eventos <% end %>
@@ -64,7 +64,7 @@
             <% end %>
 
             <% if current_user.recruitment_access || current_user.guild_role.id > 6 %>
-            <li><%= link_to requests_path do %><i class="fa fa-users"></i> Membros Expulsos <% end %>
+            <li><%= link_to kicked_members_path do %><i class="fa fa-users"></i> Membros Expulsos <% end %>
             </li>
             <% end %>
 

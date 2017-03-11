@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notifies
   resources :gvg_cores do
     collection do
       post 'invite_core'
@@ -36,7 +37,7 @@ Rails.application.routes.draw do
   get 'recruitment' => 'members#recruitment'
   get 'requests' => 'members#requests'
 
-  resources :events, only: [:index, :create, :update] do
+  resources :events, only: [:index, :create, :update, :destroy] do
     collection do
 
     end

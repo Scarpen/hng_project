@@ -80,6 +80,22 @@
     </div>
 
     <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Data do Evento</label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.input :event_date, input_html: { class: 'form-control', style: "width: 32%; display:inline" }, label: false %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Horario </label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.input :event_time, input_html: { class: 'form-control', style: "width: 47%; display:inline" }, label: false %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+    </div>
+
+    <div class="form-group row">
       <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Time de GvG</label>
       <div class="col-md-6 col-sm-6 col-xs-12">
         <%= f.association :gvg_core, collection: GvgCore.all.order(:name), prompt: "Escolha um Core", label_method: :name, input_html: { class: 'form-control' }, placeholder: "Time de GvG", label: false %>
@@ -92,7 +108,7 @@
     <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
        <%= f.submit "Enviar", class: "btn btn-primary" %>
     </div>
-<% end %>
+    <% end %>
 
 
         </div>

@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   belongs_to :gvg_core
   has_many :comments
   has_many :midia_topics
+  has_many :notifies
 
   has_many :events
   mount_uploader :avatar, AvatarUploader

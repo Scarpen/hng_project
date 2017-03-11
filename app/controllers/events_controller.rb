@@ -19,6 +19,15 @@ class EventsController < ApplicationController
 	    end
 	end
 
+	def destroy
+		@event = Event.find(params[:id])
+		@event.destroy
+		respond_to do |format|
+		      format.html { redirect_to events_path, notice: 'O Evento foi deletado com sucesso' }
+		      format.json { head :no_content }
+    	end
+  	end
+
 	  def update
 	  	@event = Event.find(params[:id])
 	    respond_to do |format|

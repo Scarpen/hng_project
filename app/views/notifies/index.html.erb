@@ -1,0 +1,48 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3 style="margin-left: 20px; margin-top:15px;">Comunicados</h3>
+      </div>
+
+      <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <%if current_user.guild_role.permition > 3 %>
+          <%= link_to "Novo Comunicado",new_notify_path, class: "btn btn-primary" %>
+          <% end %>
+          <% @notifies.order(created_at: :desc).each do |notify| %>
+            <div class="panel panel-default" style="margin-bottom: 2px;">
+              <div class="panel-heading">
+                <a href="#" onclick="toggle_func(<%=notify.id%>)">
+                  <h3 class="panel-title">
+                    <%= notify.title %> 
+                    <% if current_user == notify.user || current_user.guild_role.permition > notify.user.guild_role.permition || current_user.guild_role.permition > 6%>
+                    <%= link_to '', edit_notify_path(notify), class: "fa fa-pencil", style: "text-decoration: none;" %> 
+                    <%= link_to '',  notify,  method: :delete, data: { confirm: 'Tem certeza?' }, class: "fa fa-trash", style: "text-decoration:none;" %>
+                    <% end %>
+                  </h3>
+                </a>
+              </div>
+              <div class="panel-body" id="notify_<%= notify.id %>" style="display:none;">
+                <%= notify.description.html_safe %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggle_func(notify_id){
+  $("#notify_"+notify_id).slideToggle();
+};
+</script>

@@ -1,0 +1,23 @@
+<%= simple_form_for(@notify) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-group row">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Título</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+        	
+              <%= f.input :title, input_html: { class: 'form-control' }, placeholder: "Título", label: false %>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+	</div>
+    <div class="form-group row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <%= f.input :description, as: :wysihtml5, wysihtml5: { locale: "pt-BR" }, input_html: { class: 'form-control' }, label: false %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Enviar", class: "btn btn-primary"  %>
+  </div>
+<% end %>

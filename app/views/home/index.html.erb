@@ -24,6 +24,10 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel" style="height:600px;">
           <div class="x_title">
+            <% if current_user.status == "1" %>
+		<h3> Leiam o <a href="https://docs.google.com/document/d/1p1cIM1gamuA-IOodTjgI0X1oB8FQD2BWh-J2lhKSBzM/edit" target="_blank" style="color: blue; text-decoration: "underline"> Plano do Headstart </a> </h3>
+		<h4> Podem ler também o <a href="https://docs.google.com/document/d/1S29Glqc5nrzpvN0z1saLfQZAxJGK-igao2gnu5MTGyg/edit" target="_blank" style="color: blue; text-decoration: "underline" > Guia rápido de alterações dos itens e do META </a> </h4>
+	    <% end %>
             <% if current_user.status == "2" %>
               Aguarde a confimação por meio de um Oficial
             <% end %>

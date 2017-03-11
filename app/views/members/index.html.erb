@@ -19,7 +19,7 @@
         <div class="x_panel">
           <span> Léndarios: <%= @members.where(account: "Lendária").size %></span> / 
           <span> Épicos: <%= @members.where(account: "Épica").size %></span> / 
-          <span>Veteranos: <%= @members.where(account: "Veterana").size %></span>
+          <span> Veteranos: <%= @members.where(account: "Veterana").size %></span>
     <table class="table table-hover" id="members_table">
 	<thead>
 		<tr> 
@@ -34,8 +34,38 @@
 	<tbody>
     
 	<% @members.each do |member| %>
+  <% if current_user.guild_role.permition > member.guild_role.permition and current_user.guild_role.permition > 6 %>
+    <div class="modal fade" id="refuse_member_<%= member.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Expulsar Membro: <%= member.nick %></h4>
+                </div>
+                <%= simple_form_for member, url: refuse_request_members_path(member,user_id: member.id) do |f| %>
+                <div class="modal-body">
+                    <div class="form-group row">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Qual motivo da expulsão?</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <%= f.input :reason, input_html: { class: 'form-control', value: '' }, placeholder: "Qual o motivo da expulsão?", label: false %>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <%= f.submit "Recusar Membro", class: "btn btn-danger"%>
+                </div>
+                <% end %>
+              </div>
+          </div>
+        </div>
+    <% end %>
 		<tr>
-			<td> <%= member.nick %> <%= link_to show_member_members_path(user: member) do %> <i class="fa fa-eye"></i> <% end %> </td>
+			<td> <%= member.nick %> <%= link_to show_member_members_path(user: member) do %> <i class="fa fa-eye"></i> <% end %> 
+        <% if current_user.guild_role.permition > member.guild_role.permition and current_user.guild_role.permition > 6 %>
+        <a href="#"class="fa fa-close" data-toggle="modal" data-target="#refuse_member_<%= member.id %>" style="text-decoration: none;">
+              </a> <% end %></td>
 			<td id="role_<%= member.id %>"><%= member.guild_role.name %>
 				<% if user_signed_in? %>
 					<% if current_user.guild_role.permition > member.guild_role.permition + 1 %>

@@ -1,5 +1,3 @@
-
-
 <div class="right_col" role="main">
   <div class="">
     <div class="page-title">
@@ -16,42 +14,97 @@
 			 <div class="row">
 				<% @access.order(:nick).each do |member| %>
 				  <div class="col-sm-6 col-md-3">
-				    <div class="thumbnail" style="height: 350px">
+				    <div class="thumbnail" style="height: 360px">
 				      <%= image_tag member.avatar.url, :class => "img-circle profile_img", style: "height: 65px; width: 65px;"  %>
 				      <div class="caption">
 				        <h3><%= member.nick %></h3>
 				        <p> Tipo de Conta: <%= member.account %> </p>
 				        <p> Recrutador: <%= member.recruiter %> </p>
 				        <p> Interesses: <%= interess_list(member) %> </p>
+				        <p> Email: <%= member.email %> </p>				        
 				        <p> Alternativos: <%= member.alt1 %>,<%= member.alt2%> </p>
-				        <p><%= link_to 'Aceitar', accept_request_members_path(user: member.id), class: "btn btn-primary" %> <%= link_to 'Recusar', refuse_request_members_path(user: member.id), class: "btn btn-default" %> 
+				        <p><%= link_to 'Aceitar', accept_request_members_path(user: member.id), class: "btn btn-primary" %> 
+				        	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#refuse_member_<%= member.id %>">
+							  Recusar
+							</button>
 				        </p>
 				      </div>
 				    </div>
 				  </div>
+				  <div class="modal fade" id="refuse_member_<%= member.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="myModalLabel">Recusar Membro: <%= member.nick %></h4>
+					      </div>
+					      <%= simple_form_for member, url: refuse_request_members_path(member,user_id: member.id) do |f| %>
+					      <div class="modal-body">
+					        	<div class="form-group row">
+							      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Qual motivo da recusa?</label>
+							      <div class="col-md-6 col-sm-6 col-xs-12">
+							        <%= f.input :reason, input_html: { class: 'form-control', value: '' }, placeholder: "Qual o motivo da recusa?", label: false %>
+							      </div>
+							      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+							    </div>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					        <%= f.submit "Recusar Membro", class: "btn btn-danger"%>
+					      </div>
+					      <% end %>
+					    </div>
+					</div>
+				</div>
 				<% end %>
 			</div>
 			 <h5> <strong> Recrutamento (<%= @recruitment.size%>) </strong> </h5> 
-			 <div class="row">
 			<% @recruitment.each do |member| %>
 				<div class="col-sm-6 col-md-3">
-				    <div class="thumbnail" style="height: 370px">
+				    <div class="thumbnail" style="height: 380px">
 				      <%= image_tag member.avatar.url, :class => "img-circle profile_img", style: "height: 65px; width: 65px;"  %>
 				      <div class="caption">
 				        <h3><%= member.nick %></h3>
 				        <p> Razão que deseja entrar na guild: <%= member.reason %> </p>
 				        <p> Guild Anterior: <%= member.last_guild %> </p>
 				        <p> Tipo de Conta: <%= member.account%> </p>
-				        <p> Recrutador: <%= member.recruiter %> </p>
-				        <p> Interesses: <%= interess_list(member) %> </p>
+				        <p> Interesses: <%= interess_list(member) %> </p>]
+				        <p> Email: <%= member.email %> </p>
 				        <p> Alternativos: <%= member.alt1 %>,<%= member.alt2%> </p>
-				        <p><%= link_to 'Aceitar', accept_request_members_path(user: member.id), class: "btn btn-primary" %> <%= link_to 'Recusar', refuse_request_members_path(user: member.id), class: "btn btn-default" %> 
-				        </p>
+
+				        <p><%= link_to 'Aceitar', accept_request_members_path(user: member.id), class: "btn btn-primary" %> 
+				        	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#refuse_member_<%= member.id %>">
+							  Recusar
+							</button>				        </p>
 				      </div>
 				    </div>
 				  </div>
+				<div class="modal fade" id="refuse_member_<%= member.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="myModalLabel">Recusar Membro: <%= member.nick %></h4>
+					      </div>
+					      <%= simple_form_for member, url: refuse_request_members_path(member,user_id: member.id) do |f| %>
+					      <div class="modal-body">
+					        	<div class="form-group row">
+							      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form">Qual motivo da recusa?</label>
+							      <div class="col-md-6 col-sm-6 col-xs-12">
+							        <%= f.input :reason, input_html: { class: 'form-control', value: '' }, placeholder: "Qual o motivo da recusa?", label: false %>
+							      </div>
+							      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+							    </div>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					        <%= f.submit "Recusar Membro", class: "btn btn-danger"%>
+					      </div>
+					      <% end %>
+					    </div>
+					</div>
+				</div>
 			<% end %>
-			</div>
           </div>
         </div>
       </div>

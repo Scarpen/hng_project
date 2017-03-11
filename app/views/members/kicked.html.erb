@@ -1,0 +1,53 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3 style="margin-left: 20px; margin-top:15px;">Membros Expulsos</h3>
+      </div>
+
+      <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+
+      <div class="col-md-12 col-sm-12 col-xs-12">
+
+        <div class="x_panel">
+        <table class="table table-hover" id="gvgs_table">
+            <thead>
+              <tr> 
+                <th> Nick </th>
+                <th> Cargo </th>
+                <th> Razão </th>
+                <th> Kickado em </th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            <% @members.each do |member| %>
+          <tr>
+            <td> <%= member.nick %> </td>
+            <td> <%= member.guild_role.name %> </td>
+            <td> <%= member.reason %> </td>
+            <td> <%= member.updated_at.to_formatted_s(:short) %> </td>
+
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$('#gvgs_table').dataTable( {
+  paginate: false,
+  scrollY: 700
+} );
+</script>

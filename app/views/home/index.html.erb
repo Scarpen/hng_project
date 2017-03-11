@@ -34,6 +34,9 @@
             <% if current_user.status == "3" %>
               Entre no nosso TS: ts3.honornglory.com nos horarios de 16:00 e 21:00 para a entrevista de recrutamento (caso já tenha feito, aguarde a confirmação)
             <% end %>
+            <% if current_user.status == "4"%>
+              Você saiu ou foi expulso da guild na data: <%= current_user.update_at.to_formatted_s(:short) %>
+            <% end %>
           </div>
         </div>
       </div>

@@ -46,7 +46,8 @@ Rails.application.routes.draw do
     collection do
       get 'log_in'
       get 'accept_request'
-      get 'refuse_request'
+      get 'kicked'
+      patch 'refuse_request'
       get 'promote_member'
       get 'demote_member'
       get 'show_member'

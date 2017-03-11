@@ -63,6 +63,11 @@
             </li>
             <% end %>
 
+            <% if current_user.recruitment_access || current_user.guild_role.id > 6 %>
+            <li><%= link_to requests_path do %><i class="fa fa-users"></i> Membros Expulsos <% end %>
+            </li>
+            <% end %>
+
 
 
 

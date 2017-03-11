@@ -19,7 +19,9 @@
 <%= render "partials/sidenav" %>
 <% end %>
 <% end %>
+<% if current_user.status == "4" %>
 <%= render "partials/topnav" %>
+<% end %>
 <%= yield %>
   <%= render "partials/footer" %>
   <%= javascript_include_tag 'footermanifest', 'data-turbolinks-track' => true %>

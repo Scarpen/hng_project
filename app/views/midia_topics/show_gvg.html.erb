@@ -27,12 +27,13 @@
                    </span>
                     <span> <%= link_to '', destroy_gvg_path(id: @gvg.id), method: :delete, class: "glyphicon glyphicon-trash", style: "text-decoration: none", data: { confirm: 'Você tem certeza que deseja excluir essa GvG?'} %> </span>
                   <%end%> </h2>
-          <p> <strong> Core: </strong> <%= @gvg.gvg_core.name %> <br>
+          <p> <strong> Core: </strong> <%= @gvg.gvg_core.name if @gvg.gvg_core %> <br>
            <strong> Jogadores: </strong> <%= @gvg.players %> <br>
-           <strong> Mapa: </strong> <%= @gvg.map %> <br>
-           <strong> Tipo de Mapa: </strong> <%= @gvg.gvg_type %> <br>
-           <strong> Adversarios: </strong> <%= @gvg.enemies %> <br>
-	   <strong> Killboard: </strong> <a target="_blank" href="<%= @gvg.killboard %>"><%= @gvg.killboard %></a></p>	   
+           <strong> Mapa: </strong> <%= @gvg.map if @gvg.map%> <br>
+           <strong> Tipo de Mapa: </strong> <%= @gvg.gvg_type if @gvg.gvg_type %> <br>
+           <strong> Adversarios: </strong> <%= @gvg.enemies if @gvg.enemies %> <br>
+           <strong> Data e Hora: </strong> <%= @gvg.event_date.to_formatted_s(:short) if @gvg.event_date %> <%= @gvg.event_time.strftime("%I:%M%p") if @gvg.event_time %><br>
+	         <strong> Killboard: </strong> <a target="_blank" href="<%= @gvg.killboard %>"><%= @gvg.killboard %></a></p>	   
           <div style="position:relative;height:0;padding-bottom:56.25%"> <iframe src="https://www.youtube.com/embed/<%= @gvg.video %>?ecver=2" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe> </div>
 
           <div style="text-align:left;" id="comments_<%= @gvg.id %>">  

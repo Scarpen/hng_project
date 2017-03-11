@@ -87,7 +87,7 @@ class MidiaTopicsController < ApplicationController
   end
 
 	def midia_topic_params
-      params.require(:midia_topic).permit(:title, :description, :user_id, :result_hng, :result_other, :enemy, :gvg_core_id, :killboard, :video, :midia_type, :players, :enemies, :map, :gvg_type)
+      params.require(:midia_topic).permit(:title, :description, :user_id, :result_hng, :result_other, :enemy, :gvg_core_id, :killboard, :video, :midia_type, :players, :enemies, :map, :gvg_type, :event_date, :event_time)
   end
   def comment_params
       params.require(:comment).permit(:description, :user_id, :midia_topic_id)

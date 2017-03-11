@@ -30,6 +30,7 @@
             <th> Mapa </th>
             <th> Tipo de Mapa </th>
             <th> Core </th>
+            <th> Data e Hora </th>
           </tr>
         </thead>
         <tbody>
@@ -42,6 +43,7 @@
             <td> <%= gvg.map if gvg.map %></td>
             <td> <%= gvg.gvg_type if gvg.gvg_type %></td>
             <td> <%= gvg.gvg_core.name if gvg.gvg_core %></td>
+            <td> <%= gvg.event_date.to_formatted_s(:short) if gvg.event_date %> <%= gvg.event_time.strftime("%I:%M%p") if gvg.event_time %> </td>
           </tr>
         <% end %>
         </tbody>

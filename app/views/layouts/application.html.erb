@@ -19,7 +19,7 @@
 <%= render "partials/sidenav" %>
 <% end %>
 <% end %>
-<% if current_user.status == "4" %>
+<% if current_user.status != "4" %>
 <%= render "partials/topnav" %>
 <% end %>
 <%= yield %>

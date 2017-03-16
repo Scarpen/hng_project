@@ -25,9 +25,9 @@
         <div class="x_panel" style="height:600px;">
           <div class="x_title">
             <% if current_user.status == "1" %>
-		<h3> Leiam o <a href="https://docs.google.com/document/d/1n4FqZzcgNQVZIllnyEruf8LFKe2uVYzPGOxkBUc6H40/edit?usp=sharing" target="_blank" style="color: blue; text-decoration: "underline"> Plano do Headstart </a> </h3>
-		<h4> Podem ler também o <a href="https://docs.google.com/document/d/1S29Glqc5nrzpvN0z1saLfQZAxJGK-igao2gnu5MTGyg/edit" target="_blank" style="color: blue; text-decoration: "underline" > Guia rápido de alterações dos itens e do META </a> </h4>
-	    <% end %>
+    		<h3> Leiam o <a href="https://docs.google.com/document/d/1n4FqZzcgNQVZIllnyEruf8LFKe2uVYzPGOxkBUc6H40/edit?usp=sharing" target="_blank" style="color: blue; text-decoration: underline"> Plano do Headstart </a> </h3>
+    		<h4> Podem ler também o <a href="https://docs.google.com/document/d/1S29Glqc5nrzpvN0z1saLfQZAxJGK-igao2gnu5MTGyg/edit" target="_blank" style="color: blue; text-decoration: underline" > Guia rápido de alterações dos itens e do META </a> </h4>
+    	    <% end %>
             <% if current_user.status == "2" %>
               Aguarde a confimação por meio de um Oficial
             <% end %>
@@ -38,11 +38,33 @@
               Você saiu ou foi expulso da guild na data: <%= current_user.update_at.to_formatted_s(:short) %>
             <% end %>
           </div>
+                    <% @notifies.order(created_at: :desc).each do |notify| %>
+            <div class="panel panel-default" style="margin-bottom: 2px;">
+              <div class="panel-heading">
+                <a href="#" onclick="toggle_func(<%=notify.id%>)">
+                  <h3 class="panel-title">
+                    <%= notify.title %> 
+                    <% if current_user == notify.user || current_user.guild_role.permition > notify.user.guild_role.permition || current_user.guild_role.permition > 6%>
+                    <%= link_to '', edit_notify_path(notify), class: "fa fa-pencil", style: "text-decoration: none;" %> 
+                    <%= link_to '',  notify,  method: :delete, data: { confirm: 'Tem certeza?' }, class: "fa fa-trash", style: "text-decoration:none;" %>
+                    <% end %>
+                  </h3>
+                </a>
+              </div>
+              <div class="panel-body" id="notify_<%= notify.id %>" style="display:none;">
+                <%= notify.description.html_safe %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
 <!-- /page content -->
-
+<script>
+function toggle_func(notify_id){
+  $("#notify_"+notify_id).slideToggle();
+};
+</script>
 <!--Test Page specific JS -->

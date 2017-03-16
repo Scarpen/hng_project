@@ -43,6 +43,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :itens, only: [:index] do
+    collection do
+
+    end
+  end
+
   resources :members, only: [:index] do
     collection do
       get 'log_in'

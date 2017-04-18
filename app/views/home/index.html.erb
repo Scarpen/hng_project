@@ -38,7 +38,7 @@
               Você saiu ou foi expulso da guild na data: <%= current_user.update_at.to_formatted_s(:short) %>
             <% end %>
           </div>
-                    <% @notifies.order(created_at: :desc).each do |notify| %>
+            <% @notifies.order(created_at: :desc).each do |notify| %>
             <div class="panel panel-default" style="margin-bottom: 2px;">
               <div class="panel-heading">
                 <a href="#" onclick="toggle_func(<%=notify.id%>)">

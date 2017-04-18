@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311233437) do
+ActiveRecord::Schema.define(version: 20170418002639) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -87,14 +87,15 @@ ActiveRecord::Schema.define(version: 20170311233437) do
     t.string   "killboard",    limit: 255
     t.string   "video",        limit: 255
     t.string   "midia_type",   limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "players",      limit: 255
     t.string   "enemies",      limit: 255
     t.string   "map",          limit: 255
     t.string   "gvg_type",     limit: 255
     t.date     "event_date"
     t.time     "event_time"
+    t.text     "crafts",       limit: 65535
   end
 
   create_table "notifies", force: :cascade do |t|
@@ -155,6 +156,7 @@ ActiveRecord::Schema.define(version: 20170311233437) do
     t.boolean  "territory_feed"
     t.boolean  "castle"
     t.boolean  "warcamp"
+    t.text     "crafts",                 limit: 65535
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

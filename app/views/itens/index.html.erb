@@ -17,9 +17,63 @@
 
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
-          <%= generatetree.html_safe %>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#crafts">
+                Editar Craft
+          </button> 
+          <div class="modal fade" id="crafts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"> Editar Craft %></h4>
+                  </div>
+                  <%= simple_form_for current_user, url: update_crafts_itens_path(current_user, user_id: current_user.id) do |f| %>
+                  <div class="modal-body">
+                      <div class="form-group row">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12 control-label-form"> Quais crafts seus personagens realizam? </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.input :crafts, input_html: { class: 'form-control' }, placeholder: "Quais crafts seus personagens realizam?", label: false %>
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-12"> </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <%= f.submit "Salvar", class: "btn btn-primary"%>
+                  </div>
+                  <% end %>
+                </div>
+            </div>
+          </div>
+          <div>
+            <table class="table table-hover" id="crafts_table">
+              <thead>
+                <tr> 
+                  <th> Nick </th>
+                  <th> Chars Alternativos </th>
+                  <th> Crafts </th>
+                </tr>
+              </thead>
+              <tbody>
+                
+              <% @members.each do |member| %>
+              <tr>
+                <td> <%= member.nick %> </td>
+                <td> <%= member.alt1 %>, <%= member.alt2 %> </td>
+                <td> <%= member.crafts %> </td>
+              </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+$('#crafts_table').dataTable( {
+  paginate: false,
+  scrollY: 700
+} );
+</script>

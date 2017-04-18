@@ -37,6 +37,7 @@ protected
 		devise_parameter_sanitizer.for(:sign_up) << :territory_feed
 		devise_parameter_sanitizer.for(:sign_up) << :castle
 		devise_parameter_sanitizer.for(:sign_up) << :warcamp
+		devise_parameter_sanitizer.for(:sign_up) << :crafts
 
 		#devise_parameter_sanitizer.for(:sign_up) << { ability_ids: [] }
 		#devise_parameter_sanitizer.for(:sign_up) << { interest_ids: [] }
@@ -70,6 +71,7 @@ protected
 		devise_parameter_sanitizer.for(:account_update) << :territory_feed
 		devise_parameter_sanitizer.for(:account_update) << :castle
 		devise_parameter_sanitizer.for(:account_update) << :warcamp
+		devise_parameter_sanitizer.for(:account_update) << :crafts
 
 		#devise_parameter_sanitizer.for(:account_update) << { ability_ids: [] }
 		#devise_parameter_sanitizer.for(:account_update) << { interest_ids: [] }

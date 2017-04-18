@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   resources :itens, only: [:index] do
     collection do
-
+      patch 'update_crafts'
     end
   end
 
